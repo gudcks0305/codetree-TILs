@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 public class Main {
-   public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         // 입력 받기
@@ -21,15 +21,8 @@ public class Main {
         // 3진수 변형 가능한 숫자 리스트 구하기
         Set<Long> ternaryCandidates = generateTernaryCandidates(b);
 
-        // 교집합 찾기
-        for (Long candidate : binaryCandidates) {
-            if (ternaryCandidates.contains(candidate)) {
-                return candidate;
-            }
-        }
-
-        // 유일한 교집합 값이 존재한다고 했으므로 찾지 못하는 경우는 없음
-        return -1;
+        binaryCandidates.retainAll(ternaryCandidates);
+        return binaryCandidates.iterator().next();
     }
 
     public static Set<Long> generateBinaryCandidates(String binaryString) {
@@ -77,12 +70,8 @@ public class Main {
     }
 
     public static long convertToDecimal(char[] numberArray, int base) {
-        long value = 0;
-        for (char digit : numberArray) {
-            value = value * base + (digit - '0');
-        }
-        return value;
+        String number = new String(numberArray);
+        return Long.parseLong(number, base);
     }
-
 
 }
