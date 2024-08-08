@@ -5,47 +5,61 @@ import java.util.ArrayList;
 import java.util.List;
 public class Main {
    private static final int RECTANGLE_LENGTH = 10;
-    private static final int ORIGIN_WIDTH_X_HEIGHT = 100;
+    private static final int GRID_SIZE = 100;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int nums = Integer.parseInt(br.readLine().trim());
-        List<Pair<Integer,Integer>> ractanglesPointsXY = new ArrayList<>();
-        for (int i = 0 ; i < nums; i++){
+        List<Pair<Integer, Integer>> rectanglesPointsXY = new ArrayList<>();
+        for (int i = 0; i < nums; i++) {
             String[] xy = br.readLine().split(" ");
-            ractanglesPointsXY.add(new Pair<>(Integer.parseInt(xy[0]),Integer.parseInt(xy[1])));
+            rectanglesPointsXY.add(new Pair<>(Integer.parseInt(xy[0]), Integer.parseInt(xy[1])));
         }
-        int result = 0;
-        for (int i = 0 ; i < nums-1; i++){
-            for (int j = i+1 ; j < nums; j++){
-                result += getIntersectionArea(ractanglesPointsXY.get(i),ractanglesPointsXY.get(j));
+
+        boolean[][] grid = new boolean[GRID_SIZE][GRID_SIZE];
+        for (Pair<Integer, Integer> rectangle : rectanglesPointsXY) {
+            markGrid(grid, rectangle.x(), rectangle.y());
+        }
+
+        int result = countCoveredArea(grid);
+        System.out.println(result);
+    }
+
+    private static void markGrid(boolean[][] grid, int x, int y) {
+        for (int i = x; i < x + RECTANGLE_LENGTH && i < GRID_SIZE; i++) {
+            for (int j = y; j < y + RECTANGLE_LENGTH && j < GRID_SIZE; j++) {
+                grid[i][j] = true;
             }
         }
-        System.out.println(100 * nums - result);
     }
-    // A's area + B's Area - AB's intersection
-    public static int getIntersectionArea(Pair<Integer,Integer> r1 , Pair<Integer,Integer> r2){
-        // cross x , y
-        int x = Math.max(0,Math.min(r1.x + RECTANGLE_LENGTH, r2.x + RECTANGLE_LENGTH) - Math.max(r1.x, r2.x));
-        int y = Math.max(0,Math.min(r1.y + RECTANGLE_LENGTH, r2.y + RECTANGLE_LENGTH) - Math.max(r1.y, r2.y));
-        return x * y;
-    }
-    static final class Pair<T, U> {
 
+    private static int countCoveredArea(boolean[][] grid) {
+        int count = 0;
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (grid[i][j]) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    static final class Pair<T, U> {
         private final T x;
         private final U y;
 
-        Pair(
-            T x,
-            U y
-        ) {
+        Pair(T x, U y) {
             this.x = x;
             this.y = y;
         }
 
-        public T x() {return x;}
-
-        public U y() {return y;}
-
+        public T x() {
+            return x;
         }
+
+        public U y() {
+            return y;
+        }
+    }
 }
