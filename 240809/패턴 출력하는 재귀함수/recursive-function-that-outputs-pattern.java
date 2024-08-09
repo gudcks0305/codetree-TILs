@@ -5,7 +5,7 @@ public class Main {
         if (start % 2 == 1) {
             System.out.print(start + " ");
         }
-        printOddsAsc(start + 2, end);
+        printOddsAsc(start + 1, end);
     }
 
     // Recursive method to print odd numbers in descending order
@@ -14,7 +14,7 @@ public class Main {
         if (start % 2 == 1) {
             System.out.print(start + " ");
         }
-        printOddsDesc(start - 2, end);
+        printOddsDesc(start - 1, end);
     }
     
     public static void main(String[] args) {
@@ -24,18 +24,10 @@ public class Main {
         
         if (n >= 369) {
             // Case where n is greater than or equal to 369
-            if (369 % 2 == 0) { // Ensure starting number is odd
-                printOddsAsc(369 + 1, n);
-            } else {
-                printOddsAsc(369, n);
-            }
+            printOddsAsc(369, n);
         } else {
             // Case where n is less than 369
-            if (n % 2 == 0) { // Ensure starting number is odd
-                printOddsDesc(n - 1, 369);
-            } else {
-                printOddsDesc(n, 369);
-            }
+            printOddsAsc(n, 369);
         }
     }
 }
