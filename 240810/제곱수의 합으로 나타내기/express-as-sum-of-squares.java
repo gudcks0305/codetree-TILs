@@ -22,7 +22,7 @@ public class Main {
         for(int i=2; i<=n; i++) {
             int min=100001;
 
-            for(int j=1; j<= Math.sqrt(i); j++) {
+            for(int j=1; j<= i/2; j++) {
 
                 if(j*j == i) { // i가 어떤수의 제곱인 경우는 dp가 1이다
                     min = 1;
