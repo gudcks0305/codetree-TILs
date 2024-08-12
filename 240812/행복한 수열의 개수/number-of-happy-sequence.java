@@ -27,6 +27,7 @@ public class Main {
 
     public static boolean isHappy(int x,int m,int[][] maps){
         int cnt = 1;
+        int maxCnt = 1;
         int first = maps[0][x];
         for(int i = 1; i < maps.length; i++){
             if(maps[i][x] == first) {
@@ -34,14 +35,17 @@ public class Main {
             }else{
                 cnt=1;
             }
+            maxCnt = Math.max(cnt,maxCnt);
+
             first = maps[i][x];
 
         }
-        return cnt >= m;
+        return maxCnt >= m;
     }
 
     public static boolean isHappyY(int y,int m,int[][] maps){
         int cnt = 1;
+        int maxCnt = 1;
         int first = maps[y][0];
         for(int i = 1; i < maps.length; i++){
             if(maps[y][i] == first) {
@@ -50,9 +54,11 @@ public class Main {
             }else{
                 cnt=1;
             }
+            maxCnt = Math.max(cnt,maxCnt);
+
             first = maps[y][i];
 
         }
-        return cnt >= m;
+        return maxCnt >= m;
     }
 }
