@@ -16,8 +16,8 @@ public class Main {
         int max = -1;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
-                for(int h = 1; h < n - i; h++){
-                    for(int w = 1; w < m - j; w++){
+                for(int h = 0; h < n - i; h++){
+                    for(int w = 0; w < m - j; w++){
                         if(isPositiveSquare(j,i,j+w,i+h)){
                             int wh = (w + 1) * (h + 1);
                             max = Math.max(max,wh);
@@ -30,9 +30,11 @@ public class Main {
     }
 
     private static boolean isPositiveSquare(int x1,int y1,int x2,int y2){
+       // System.out.println(y1 + " " + x1 + " " + y2 + " " + x2);
         for(int i = y1; i <= y2; i++){
             for(int j = x1; j <= x2; j++){
-                if(maps[i][j] < 0) return false;
+               // System.out.println("뀨" + maps[i][j]);
+                if(maps[i][j] <= 0) return false;
             }
         }
         return true;
