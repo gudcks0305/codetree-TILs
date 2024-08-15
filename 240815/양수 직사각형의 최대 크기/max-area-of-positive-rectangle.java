@@ -16,8 +16,8 @@ public class Main {
         int max = -1;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
-                for(int h = 0; h < n - i; h++){
-                    for(int w = 0; w < m - j; w++){
+                for(int h = 1; h < n - i; h++){
+                    for(int w = 1; w < m - j; w++){
                         if(isPositiveSquare(j,i,j+w,i+h)){
                             int wh = (w + 1) * (h + 1);
                             max = Math.max(max,wh);
