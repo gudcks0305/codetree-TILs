@@ -103,10 +103,20 @@ public class Main {
         maps[y2 - 1][x1] = thirdTemp;
         maps[y1 + 1][x2] = secondTemp;
 
+        for(int i = 0; i < maps.length; i++){
+            for(int j = 0; j < maps[i].length; j++){
+                newMaps[i][j] = maps[i][j];
+            }
+        }
 
         for(int i = y1; i <= y2; i++){
             for(int j = x1; j <= x2; j++){
                 applyAvg(i,j,maps);
+            }
+        }
+        for(int i = 0; i < maps.length; i++){
+            for(int j = 0; j < maps[i].length; j++){
+                maps[i][j] = newMaps[i][j];
             }
         }
 
