@@ -4,10 +4,9 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
-        int min = 11;
+        int min = 30;
         for(int i = 1; i <= s.length(); i++){
             String shift = rightShift(s,i);
-            //System.out.println(runLengthEncoding(shift));
             min = Math.min(runLengthEncoding(shift).length() , min);
         }
         System.out.println(min);
