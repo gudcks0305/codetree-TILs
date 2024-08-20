@@ -39,21 +39,27 @@ public class Main {
     }
 
     // draw 
-    public static void fall(int[][] maps){
-        int length = maps.length - 1;
-        for(int i = length; i >= 0; i--){
-            for(int j = length; j >= 0; j--){
-                if(maps[j][i] == 0){
-                    for(int k = j; k >0; k--){
-                        maps[k][i] = maps[k-1][i];
-                    }
-                    maps[0][i] = 0;
+    public static void fall(int[][] maps) {
+        int length = maps.length;
+        
+        for(int i = 0; i < length; i++) {  // Iterate over each column
+            int writeIndex = length - 1;  // Start writing from the bottom of the column
+            
+            // Traverse the column from bottom to top
+            for(int j = length - 1; j >= 0; j--) {
+                if(maps[j][i] != 0) {  // If the current value is not 0, move it down
+                    maps[writeIndex][i] = maps[j][i];
+                    writeIndex--;  // Move the write index up
                 }
             }
+            
+            // Fill the remaining positions at the top with 0
+            for(int j = writeIndex; j >= 0; j--) {
+                maps[j][i] = 0;
+            }
         }
-
-     
     }
+
 
     public static void print(int[][] maps, int n){
         for(int i = 0; i < n; i++){
