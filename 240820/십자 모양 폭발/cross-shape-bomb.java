@@ -41,8 +41,8 @@ public class Main {
     // draw 
     public static void fall(int[][] maps){
         int length = maps.length - 1;
-        for(int i = length; i > 0; i--){
-            for(int j = length; j > 0; j--){
+        for(int i = length; i >= 0; i--){
+            for(int j = length; j >= 0; j--){
                 if(maps[j][i] == 0){
                     for(int k = j; k >0; k--){
                         maps[k][i] = maps[k-1][i];
