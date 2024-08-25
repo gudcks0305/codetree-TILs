@@ -26,7 +26,7 @@ public class Main {
     static final int[] dy = {1,-1,0,0};
     static final int[] dx = {0,0,1,-1};
     public static final void dfs(int[][] maps , boolean[][] visited, int y , int x){
-        print(visited);
+        //print(visited);
         for(int i = 0 ; i < 4 ; i++){
             int nextY = y + dy[i];
             int nextX = x + dx[i];
