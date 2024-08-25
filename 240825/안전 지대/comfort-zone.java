@@ -38,7 +38,11 @@ public class Main {
             maxCnt = Math.max(cnt,maxCnt);
             visited = new boolean[n][m];
         }
-        System.out.println(minK + " " + maxCnt);
+        if(minK == 101){
+            System.out.println(1 + " " + 0);
+        }else{
+            System.out.println(minK + " " + maxCnt);
+        }
     }
 
     public static void dfs(int[][] maps, boolean[][] visited,int y ,int x,int k){
