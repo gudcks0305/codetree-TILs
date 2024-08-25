@@ -17,8 +17,8 @@ public class Main {
             }
         }
         // dfs
-        int minK = 101;
-        int maxCnt = 1;
+        int minK = 1;
+        int maxCnt = 0;
         for(int k = 1; k < maxVal; k++){
             int cnt = 0;
 
