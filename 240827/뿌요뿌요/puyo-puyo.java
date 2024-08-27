@@ -28,7 +28,12 @@ public class Main {
                 }
             }
         }
+        if(n == 1){
+            System.out.println(0 +" " + 0);
+        }else{
         System.out.println(boom + " " + max);
+
+        }
     }
     static int[] dy = {1,-1,0,0};
     static int[] dx = {0,0,1,-1};
@@ -46,6 +51,7 @@ public class Main {
             visited[nextY][nextX] = true;
             cnt++;
             dfs(maps,visited,nextY,nextX);
+
         }
     }
 }
