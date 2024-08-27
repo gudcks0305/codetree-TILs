@@ -18,7 +18,9 @@ public class Main {
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n; j++){
                 if(!visited[i][j]){
-                    cnt = 0;
+                    cnt = 1;
+                    visited[i][j] = true; // 방문 처리 추가
+
                     dfs(maps,visited,i,j);
                     max = Math.max(max,cnt);
                     if(cnt >= 4){
@@ -28,12 +30,7 @@ public class Main {
                 }
             }
         }
-        if(n == 1){
-            System.out.println(0 +" " + 0);
-        }else{
         System.out.println(boom + " " + max);
-
-        }
     }
     static int[] dy = {1,-1,0,0};
     static int[] dx = {0,0,1,-1};
