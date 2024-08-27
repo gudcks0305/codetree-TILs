@@ -19,8 +19,8 @@ public class Main {
                 if(!visited[i][j]){
                     cnt = 0;
                     dfs(maps,visited,i,j);
-                    max = Math.max(max,cnt);
                     if(cnt >= 4){
+                    max = Math.max(max,cnt);
                         value = maps[i][j];
                     }
                     
