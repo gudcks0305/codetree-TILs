@@ -3,6 +3,7 @@ public class Main {
     static int max = 0;
     static int cnt = 0;
     static int value = 0;
+    static int boom = 0;
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -19,15 +20,15 @@ public class Main {
                 if(!visited[i][j]){
                     cnt = 0;
                     dfs(maps,visited,i,j);
-                    if(cnt >= 4){
                     max = Math.max(max,cnt);
-                        value = maps[i][j];
+                    if(cnt >= 4){
+                        boom++;
                     }
                     
                 }
             }
         }
-        System.out.println(value + " " + max);
+        System.out.println(boom + " " + max);
     }
     static int[] dy = {1,-1,0,0};
     static int[] dx = {0,0,1,-1};
